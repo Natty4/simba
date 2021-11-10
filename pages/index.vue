@@ -36,13 +36,13 @@
                         class="mx-auto"
                         max-width="70%"
                         v-if="item.page==2"
-                        color="white"
+                        color="transparent"
                         border="none"
                       >
                         <v-card-text  v-if="item.page==2">
-                          <div class="text-h4 error--text">SIMBA</div>
+                          <div class="text-h4 deep-orange--text">SIMBA</div>
                           <br>
-                          <p class="text-h3 blue--text">
+                          <p class="text-h3 grey--text">
                             {{ item.txt }}
                           </p>
                           
@@ -52,7 +52,7 @@
                     
                     <v-btn v-if="item.page==4"
                       
-                      color="error "
+                      color="deep-orange "
                       @click="snackbar = true"
                     >
                       notify me
@@ -60,7 +60,7 @@
                   
                     <v-btn v-else-if="item.page==3"
                       
-                      color="error "
+                      color="deep-orange "
                       @click="snackbar = true"
                     >
                       notify me
@@ -75,7 +75,7 @@
 
                       <template v-slot:action="{ attrs }">
                         <v-btn
-                          color="error"
+                          color="deep-orange"
                           text
                           v-bind="attrs"
                           @click="snackbar = false"

@@ -1,6 +1,6 @@
 # simba kids
 
-### By : Natnael Kiflu
+### By : Natnael 
 
 ## Build Setup
 

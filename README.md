@@ -1,4 +1,6 @@
-# simba
+# simba kids
+
+### By : Natnael Kiflu
 
 ## Build Setup
 

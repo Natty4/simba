@@ -178,7 +178,7 @@
         miniVariant: false,
         right: true,
         rightDrawer: false,
-        title: 'coming soon | SimbaKids',
+        title: 'SimbaKids | coming soon',
         timeout: 6000,
         dialog: false,
         logo: {

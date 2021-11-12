@@ -1,2 +1,2 @@
 # simbakids
-![ SimbaKids ](/assets/img/simbakids-1.png)
+![ SimbaKids ](assets/img/simbakids-1.png)

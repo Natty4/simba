@@ -2,6 +2,8 @@
 
 ### BY : Natnael [view on the web](https://simbakids.netlify.app/)
 
+![ SimbaKids ](/assets/img/simbakids-1.png)
+
 ## Build Setup
 
 ```bash

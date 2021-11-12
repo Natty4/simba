@@ -178,7 +178,7 @@
         miniVariant: false,
         right: true,
         rightDrawer: false,
-        title: 'SimbaKids',
+        title: 'coming soon | SimbaKids',
         timeout: 6000,
         dialog: false,
         logo: {
@@ -198,17 +198,17 @@
           {
           hid: 'twitter:card',
           name: 'twitter:card',
-          content: 'Simba Kids',
+          content: 'summary_large_image',
           },
           {
             hid: 'twitter:site',
-          name: 'twitter:site',
-          content: '@SimbaKids',
+            name: 'twitter:site',
+            content: '@SimbaKids',
           },
           {
             hid: 'twitter:creator',
             name: 'twitter:creator',
-            content: '@SimbaKids',
+            content: '@kiflu_natnael',
           },
           {
             hid: 'twitter:title',
@@ -221,9 +221,14 @@
             content:'SIMBA has grown into an online clothing and kids brand that feels more like a family than a business. operating @Addis Abeba, SIMBA is all about fostering a happy and healthy work-life balance.',
           },
           {
+            hid: 'twitter:image',
+            property: 'twitter:image',
+            content:'../static/simbakidslogo.png',
+          },
+          {
             hid: 'og:image',
-          property: 'og:image',
-          content:'../static/simbakidslogo.png',
+            property: 'og:image',
+            content:'../static/simbakidslogo.png',
           },
           {
             hid: 'og:site_name',
@@ -238,7 +243,7 @@
           {
             hid: 'og:url',
             name: 'og:url',
-            content: 'https://simbakids.netlify.app',
+            content: 'https://simbakids.netlify.app/',
           },
           {
             hid: 'og:title',

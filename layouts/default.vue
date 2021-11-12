@@ -223,7 +223,7 @@
           {
             hid: 'twitter:image',
             property: 'twitter:image',
-            content: require('../assets/img/simbakids-1.png'),
+            content: 'https://simbakids.netlify.app/_nuxt/img/simbakids-1.2fdbbea.png',
           },
           {
             hid: 'og:image',

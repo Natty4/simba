@@ -1,6 +1,6 @@
 # simba kids
 
-### By : Natnael 
+### BY : Natnael [view on the web](https://simbakids.netlify.app/)
 
 ## Build Setup
 

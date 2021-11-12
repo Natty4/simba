@@ -223,12 +223,12 @@
           {
             hid: 'twitter:image',
             property: 'twitter:image',
-            content:'../static/simbakidslogo.png',
+            content: require('../static/simbakidslogo.png'),
           },
           {
             hid: 'og:image',
             property: 'og:image',
-            content:'../static/simbakidslogo.png',
+            content: require('../static/simbakidslogo.png'),
           },
           {
             hid: 'og:site_name',

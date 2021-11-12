@@ -218,17 +218,17 @@
           {
             hid: 'twitter:description',
             name: 'twitter:description',
-            content:'SIMBA has grown into an online clothing and kids brand that feels more like a family than a business. operating @Addis Abeba, SIMBA is all about fostering a happy and healthy work-life balance.',
+            content:'SIMBA has grown into an online clothing and kids brand that feels more like a family than a business. operating @Addis Abeba, SIMBAKids is all about fostering a happy and healthy work-life balance.',
           },
           {
             hid: 'twitter:image',
             property: 'twitter:image',
-            content: require('../static/simbakidslogo.png'),
+            content: require('../assets/img/simbakids-1.png'),
           },
           {
             hid: 'og:image',
             property: 'og:image',
-            content: require('../static/simbakidslogo.png'),
+            content: require('../assets/img/simbakids-1.png'),
           },
           {
             hid: 'og:site_name',

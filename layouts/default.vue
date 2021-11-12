@@ -228,7 +228,7 @@
           {
             hid: 'og:image',
             property: 'og:image',
-            content: require('../assets/img/simbakids-1.png'),
+            content: 'https://simbakids.netlify.app/_nuxt/img/simbakidslogo.104a990.png',
           },
           {
             hid: 'og:site_name',
@@ -253,7 +253,7 @@
           {
             hid: 'og:description',
             name: 'og:description',
-            content: 'SIMBA has grown into an online clothing and kids brand that feels more like a family than a business. operating @Addis Abeba, SIMBA is all about fostering a happy and healthy work-life balance.',
+            content: 'SIMBAKids has grown into an online clothing and kids brand that feels more like a family than a business. operating @Addis Abeba, SIMBAKids is all about fostering a happy and healthy work-life balance.',
           }, 
         ],
       }

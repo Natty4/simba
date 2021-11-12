@@ -228,7 +228,7 @@
           {
             hid: 'og:image',
             property: 'og:image',
-            content: 'https://simbakids.netlify.app/_nuxt/img/simbakidslogo.104a990.png',
+            content: 'https://simbakids.netlify.app/_nuxt/img/simbakids-1.2fdbbea.png',
           },
           {
             hid: 'og:site_name',

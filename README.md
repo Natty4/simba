@@ -1,6 +1,6 @@
 # simba kids
 
-### BY : Natnael [view on the web](https://simbakids.netlify.app/)
+### BY : Natnael see [on Browser](https://simbakids.netlify.app/)
 
 ![ SimbaKids ](/assets/img/simbakids-1.png)
 

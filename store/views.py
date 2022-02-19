@@ -1,12 +1,14 @@
+from django.db.models import Q
 from django.shortcuts import render
-from .serializers import *
-from .models import *
 from rest_framework.generics import *
 from rest_framework.views import APIView
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework.permissions import BasePermission, IsAuthenticated, SAFE_METHODS
 from rest_framework import status
 from users.permissions import IsOwnerOrReadOnly
-from rest_framework.permissions import BasePermission, IsAuthenticated, SAFE_METHODS
+from .serializers import *
+from .models import *
 
 
 
@@ -80,9 +82,56 @@ class ReviewCreateView(APIView):
 
 class CategoryListView(ListAPIView):
     queryset = Category.objects.all()
-    serializer_class = CastegorySerializer
+    serializer_class = CategorySerializer
 
 
 
+@api_view(['POST'])
+def search(request):
+    query = request.data.get('query', '')
+
+    if query:
+        products = Product.objects.filter(Q(name__icontains=query) | Q(short_description__icontains=query))
+        serializer = ProductSerializer(products, many=True)
+        return Response(serializer.data)
+    else:
+        return Response({"products": []})
 
 
+
+# class ImageView(APIView):
+    
+#     parser_classes = (MultiPartParser, FormParser)
+
+
+#     def modify_input_for_multiple_files(product, image):
+#       dict = {}
+#       dict['product'] = product
+#       dict['image'] = image
+#       return dict
+
+#     def get(self, request):
+#         all_images = Image.objects.all()
+#         serializer = ImageSerializer(all_images, many=True)
+#         return JsonResponse(serializer.data, safe=False)
+
+#     def post(self, request, *args, **kwargs):
+#         product = request.data['product']
+
+#         # converts querydict to original dict
+#         images = dict((request.data).lists())['image']
+#         flag = 1
+#         arr = []
+#         for img_name in images:
+#             modified_data = modify_input_for_multiple_files(product, img_name)
+#             file_serializer = ImageSerializer(data=modified_data)
+#             if file_serializer.is_valid():
+#                 file_serializer.save()
+#                 arr.append(file_serializer.data)
+#             else:
+#                 flag = 0
+
+#         if flag == 1:
+#             return Response(arr, status=status.HTTP_201_CREATED)
+#         else:
+#             return Response(arr, status=status.HTTP_400_BAD_REQUEST)

@@ -3,7 +3,7 @@ from rest_framework import serializers
 from users.serializers import UserSerializer
 
 
-class CastegorySerializer(serializers.ModelSerializer):
+class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         exclude = ["id"] 
@@ -20,7 +20,7 @@ class SizeSerializer(serializers.ModelSerializer):
 
 
 class ProductSerializer(serializers.ModelSerializer):
-    category = CastegorySerializer()
+    category = CategorySerializer()
     color = ColorSerializer(many=True, read_only=True)
     size = SizeSerializer(many=True, read_only=True)
     class Meta:

@@ -38,18 +38,19 @@ class OrderItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = OrderItem
         fields = (
+            "order",
             "price",
             "product",
             "quantity",
         )
+        read_only_fields = ('order',)
 
 class OrderSerializer(serializers.ModelSerializer):
     items = OrderItemSerializer(many=True)
-
     class Meta:
         model = Order
         fields = (
-            "id",
+            "user",
             "first_name",
             "last_name",
             "email",
@@ -57,8 +58,9 @@ class OrderSerializer(serializers.ModelSerializer):
             "zipcode",
             "place",
             "phone",
-            # "stripe_token",
+            "paid_amount",
             "items",
+            # "stripe_token",
         )
     
     def create(self, validated_data):

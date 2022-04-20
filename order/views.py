@@ -1,8 +1,8 @@
 # import stripe
-
+import requests
 from django.conf import settings
 from users.models import User
-from django.http import Http404
+from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import render
 
 from rest_framework import status, authentication, permissions
@@ -12,32 +12,87 @@ from rest_framework.response import Response
 
 from .models import Order, OrderItem
 from .serializers import OrderSerializer, MyOrderSerializer
+from payment.views import yenepay_charge
 
-@api_view(['POST'])
-@authentication_classes([authentication.TokenAuthentication])
-@permission_classes([permissions.IsAuthenticated])
-def checkout(request):
-    serializer = OrderSerializer(data=request.data)
 
-    if serializer.is_valid():
-        # stripe.api_key = settings.STRIPE_SECRET_KEY
-        paid_amount = sum(item.get('quantity') * item.get('product').price for item in serializer.validated_data['items'])
 
-        try:
-            # charge = stripe.Charge.create(
-            #     amount=int(paid_amount * 100),
-            #     currency='USD',
-            #     description='Charge from Djackets',
-            #     source=serializer.validated_data['stripe_token']
-            # )
+class Checkout(APIView):
 
-            serializer.save(user=request.user, paid_amount=paid_amount)
+    serializer_class = OrderSerializer(read_only=True)
 
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        except Exception:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    def post(self, request, format = None):
+        orders = Order.objects.all()
+        serializer = OrderSerializer(orders, data=request.data)
+        if serializer.is_valid():
+            print('____________Serializer__________________')
+            print(serializer.validated_data)
+            print('______________________________end')
+
+            order_data = serializer.validated_data
+            try:
+
+                print(order_data['user'])
+                # paid_amount = sum(item.get('quantity') * item.get('product').unit_price for item in order_data['items'])
+                # print(paid_amount)
+                # serializer.save(user=request.user, paid_amount=paid_amount)
+                
+
+                return HttpResponseRedirect(f'/{yenepay_charge(order_data)}')
+         
+
+                # return Response(serializer.data, request.GET.get('Status'), status=status.HTTP_201_CREATED)
+            except Exception as e:
+                print(e)
+                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
+
+
+
+# @api_view(['POST','GET'])
+# # @authentication_classes([authentication.TokenAuthentication])
+# # @permission_classes([permissions.IsAuthenticated])
+# def checkout(request):
+#     serializer = OrderSerializer(data=request.data)
+
+#     if serializer.is_valid():
+
+#         print('____________Serializer__________________')
+#         print(serializer.validated_data)
+#         print('______________________________end')
+
+#         order_data = serializer.validated_data
+#         try:
+#             yenepay_charge(order_data)
+
+#             serializer.save(user=request.user, paid_amount=paid_amount)
+
+#             return Response(serializer.data, status=status.HTTP_201_CREATED)
+#         except Exception:
+#             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
+
+#         # stripe.api_key = settings.STRIPE_SECRET_KEY
+#           paid_amount = sum(item.get('quantity') * item.get('product').unit_price for item in serializer.validated_data['items'])
+#         # try:
+#         #     # charge = stripe.Charge.create(
+#         #     #     amount=int(paid_amount * 100),
+#         #     #     currency='USD',
+#         #     #     description='Charge from Djackets',
+#         #     #     source=serializer.validated_data['stripe_token']
+#         #     # )
+            
+#         #     serializer.save(user=request.user, paid_amount=paid_amount)
+
+#         #     return Response(serializer.data, status=status.HTTP_201_CREATED)
+#         # except Exception:
+#         #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+#     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class OrdersList(APIView):
     authentication_classes = [authentication.TokenAuthentication]

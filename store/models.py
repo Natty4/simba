@@ -119,6 +119,11 @@ class Image(models.Model):
 		else:
 			return None
 
+	@staticmethod
+	def get_img_by_color(product, color):
+		images = Image.objects.filter(product = product, color = color)
+		return images
+
 
 class Product(models.Model):
 
